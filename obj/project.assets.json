@@ -6262,11 +6262,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\1104103708\\Documents\\VSCode\\eTickets - Copy\\eTickets.csproj",
+      "projectUniqueName": "C:\\Users\\1104103708\\Documents\\eTickets\\eTickets\\eTickets.csproj",
       "projectName": "eTickets",
-      "projectPath": "C:\\Users\\1104103708\\Documents\\VSCode\\eTickets - Copy\\eTickets.csproj",
+      "projectPath": "C:\\Users\\1104103708\\Documents\\eTickets\\eTickets\\eTickets.csproj",
       "packagesPath": "C:\\Users\\1104103708\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\1104103708\\Documents\\VSCode\\eTickets - Copy\\obj\\",
+      "outputPath": "C:\\Users\\1104103708\\Documents\\eTickets\\eTickets\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
