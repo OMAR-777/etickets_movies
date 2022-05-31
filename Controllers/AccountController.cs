@@ -39,7 +39,8 @@ namespace eTickets.Controllers
             return View(new LoginVM());
         }
 
-        public async Task<IActionResult> Users(){
+        public async Task<IActionResult> Users()
+        {
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
@@ -62,15 +63,18 @@ namespace eTickets.Controllers
                     {
                         return RedirectToAction("Index", "Movies");
                     }
+                    TempData["Error"] = "Internal Error, Could not sign you in.";
                 }
-                TempData["Error"] = "Wrong credentials, nice try brother..";
-                        return View(loginVM);
+                TempData["Error"] = "Wrong Credentials, Could not sign you in.";
+
+
+                return View(loginVM);
             }
-            TempData["Error"] = "Wrong credentials, nice try brother..";
+            TempData["Error"] = "Email is not registered.";
             return View(loginVM);
         }
 
-         public IActionResult Register()
+        public IActionResult Register()
         {
             return View(new RegisterVM());
         }
@@ -82,12 +86,14 @@ namespace eTickets.Controllers
                 return View(registerVM);
 
             var user = await _userManager.FindByEmailAsync(registerVM.EmailAddress);
-            if(user != null) {
+            if (user != null)
+            {
                 TempData["Error"] = "This email address is already in use";
                 return View(registerVM);
             }
 
-            var newUser = new ApplicationUser(){
+            var newUser = new ApplicationUser()
+            {
                 FullName = registerVM.FullName,
                 Email = registerVM.EmailAddress,
                 UserName = registerVM.EmailAddress
@@ -95,7 +101,8 @@ namespace eTickets.Controllers
 
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
-            if(newUserResponse.Succeeded){
+            if (newUserResponse.Succeeded)
+            {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
                 return View("RegisterCompleted");
             }
@@ -104,16 +111,18 @@ namespace eTickets.Controllers
 
             TempData["Error"] = "Registration failed";
             return View(registerVM);
-           
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> Logout(){
+        public async Task<IActionResult> Logout()
+        {
             await _signInManager.SignOutAsync();
 
             return RedirectToAction("Index", "Movies");
         }
-          public  IActionResult AccessDenied(string returnUrl){
+        public IActionResult AccessDenied(string returnUrl)
+        {
 
             return View();
         }
